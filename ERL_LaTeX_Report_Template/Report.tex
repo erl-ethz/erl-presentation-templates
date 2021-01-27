@@ -1,0 +1,195 @@
+
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+           %    Autore: Emanuele Aucone       %
+           %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   %%%%%  Ultima modifica:  27/01/2021      %%%%%
+   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[11pt,a4paper,oneside,english,italian]{book} 
+
+\usepackage[a4paper]{geometry}
+\geometry{verbose, tmargin=4cm, bmargin=4cm, lmargin=3cm, rmargin=3cm, headsep=0.5cm, footskip=1cm}
+
+\usepackage[export]{adjustbox}
+\usepackage[final]{pdfpages}
+
+\usepackage{pgfplots}
+\usepackage[latin1]{inputenc}
+%\usepackage[utf8x]{inputenc}		%if the file is compiled with Linux
+
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+   
+\usepackage{pdflscape}
+
+\usepackage{tikz}
+\usetikzlibrary{quotes,angles}
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,
+	decorations.pathreplacing,decorations.pathmorphing,shapes,
+	matrix,shapes.symbols}
+
+\usepackage[british]{babel}
+
+\usepackage{setspace}
+
+%\usepackage{algorithmic}
+\usepackage{algorithm} 
+
+\usepackage{siunitx} 
+
+\usepackage[nottoc]{tocbibind}
+
+\usepackage{graphicx} 
+\graphicspath{{./figure/}}
+\usepackage{epstopdf}
+\usepackage{subfigure}
+\newcommand{\goodgap}{
+	\hspace{\subfigtopskip}
+	\hspace{\subfigbottomskip}}
+
+\usepackage{multirow}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\arraybackslash}m{#1}}
+\usepackage{xcolor,colortbl}
+\definecolor{red}{rgb}{1,0,0}
+
+%\usepackage[thinspace]{SIunits}
+
+\usepackage{hyperref}  
+\hypersetup{
+	% pdfpagelayout=SinglePage, % default
+	% pdfpagemode=UseOutlines, % default
+	% bookmarksopen, % default
+	% bookmarksopenlevel=2, % default;
+	pdftitle={Report},
+	pdfauthor={Author Name},
+	pdfsubject={keywords}}  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsmath, amsfonts, amssymb, amsthm, arydshln}
+\usepackage{latexsym}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{parallel}
+\usepackage[font=small,labelfont=bf]{caption}
+
+\usepackage{geometry}
+\usepackage{array, booktabs, makecell}
+%\usepackage{siunitx}
+
+\usepackage{algpseudocode}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+\DeclareMathOperator{\traccia}{tr}
+\DeclareMathOperator{\sen}{sen}
+\DeclareMathOperator{\arcsen}{arcsen}
+\DeclareMathOperator*{\maxlim}{max\,lim}
+\DeclareMathOperator*{\minlim}{min\,lim}
+\DeclareMathOperator*{\deepinf}{\phantom{\makebox[0pt]{p}}inf}
+\DeclareMathOperator*{\argmin}{argmin}
+
+\newcommand{\varsum}[3]{\sum_{#2}^{#3}\!
+   {\vphantom{\sum}}_{#1}\;}
+\newcommand{\varprod}[3]{\sum_{#2}^{#3}\!
+   {\vphantom{\sum}}_{#1}\;}
+
+\theoremstyle{plain}
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{proposizione}[teorema]{Proposizione}
+\newtheorem{lemma}[teorema]{Lemma}
+\newtheorem{corollario}[teorema]{Corollario}
+
+\theoremstyle{definition}
+\newtheorem{definizione}[teorema]{Definizione}
+\newtheorem{esempio}[teorema]{Esempio}
+
+\theoremstyle{remark}
+\newtheorem{osservazione}[teorema]{Osservazione}
+
+\usepackage{indentfirst}
+\usepackage{listings}
+\makeatletter
+\renewcommand{\lstlistingname}{Listato}
+\makeatother 
+\lstset{
+	literate={~} {$\sim$}{1}
+}
+
+\usepackage{appendix}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy} 
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\setlength{\headheight}{14.5pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%               
+
+\begin{document}
+
+\frontmatter
+
+\renewcommand{\theequation}{\arabic{equation}}
+\renewcommand{\thesection}{\arabic{section}}
+\input{titlepage}
+
+\pagenumbering{roman}
+\setcounter{page}{0}
+
+\input{abstract}
+
+%\input{disclaimer}
+
+\lhead{\textbf{\rightmark}}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\onehalfspacing
+
+%\input{introduction}
+
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}} 
+
+\mainmatter
+
+\input{background}
+
+\input{work}
+
+\input{results}
+
+\renewcommand{\thesection}{\Alph{chapter}.\arabic{section}}
+
+\begin{appendices}
+\input{Appendix}
+\end{appendices}
+
+\backmatter
+
+\nocite{*}
+
+\bibliographystyle{unsrt}
+\bibliography{bib}
+
+\end{document}
